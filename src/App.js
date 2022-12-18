@@ -1,22 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { Suspense } from "react";
+// import ErrorBoundary from "./error.boundary.js";
+import Second from './function/second';
+import Third from './function/Third';
+// import Fourth from './function/GraphQL/Fourth'
+
+const Car = React.lazy(()=> import('./class/First'))
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <div >
+      <header >
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Suspense fallback={<div>loading...</div>}><Car /></Suspense>
+        {/*  */}
+          
+        <Second></Second>
+        <Third></Third>
+        {/* <Fourth></Fourth> */}
       </header>
     </div>
   );
